@@ -1344,6 +1344,64 @@ end
 
 windower.raw_register_event("zone change", reset_timers)
 
+windower.raw_register_event("incoming chunk", function(id, data)
+     
+    if id == 0x076 then
+         
+    elseif id == 0x028 then
+         
+        local packet = p.parse('incoming', data)
+         
+        -- Finish Weaponskill
+        if packet["Category"] == 3 then
+            if pet.isvalid == true and packet["Actor"] == pet.id then
+                debug(dump(packet))
+            end             
+        elseif packet["Category"] == 4 then
+            if pet.isvalid == true and packet["Actor"] == pet.id then
+                debug(dump(packet))
+            end
+        elseif packet["Category"] == 6 then
+             
+            if pet.isvalid == true and packet["Actor"] == pet.id then
+                debug(dump(packet))
+            end
+             
+        elseif packet["Category"] == 7 then
+             
+            if pet.isvalid == true and packet["Actor"] == pet.id then
+                 
+                if packet["Target 1 Action 1 Param"] ~= nil then
+                    local action_name = gearswap.res.monster_abilities[packet["Target 1 Action 1 Param"]].name
+                    debug(dump(packet))
+                 
+                end
+                 
+            end
+             
+         
+        elseif packet["Category"] == 8 then
+            if pet.isvalid == true and packet["Actor"] == pet.id then
+                debug(dump(packet))
+            end
+        elseif packet["Category"] == 11 then
+             
+            if pet.isvalid == true and packet["Actor"] == pet.id then
+                 
+                if packet["Param"] ~= nil then
+                    local action_name = gearswap.res.monster_abilities[packet["Param"]].name
+                    debug(dump(packet))
+                     
+                end
+                 
+            end
+             
+        end
+         
+    end
+         
+end)
+
 --Special Debug Code that prints out to a file
 function debug(message)
     if not d_mode then
