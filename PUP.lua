@@ -139,7 +139,7 @@ end
 
 function job_setup()
     -- Adjust the X (horizontal) and Y (vertical) position here to adjust the window
-    setupTextWindow(0, 0)
+    setupTextWindow(1300, 600)
 end
 
 function init_gear_sets()
@@ -229,14 +229,36 @@ function init_gear_sets()
 
     -------------------------------------Fastcast
     sets.precast.FC = {
-        -- Add your set here
+        head="Herculean Helm",
+        body="Foppish Tunica",
+        hands="Sombra Mittens",
+        legs="Herculean Trousers",
+        feet="Regal Pumps +1",
+        neck="Voltsurge Torque",
+        waist="Siegel Sash",
+        left_ear="Aredan Earring",
+        right_ear="Enchntr. Earring +1",
+        left_ring="Stikini Ring",
+        right_ring="Stikini Ring",
+        back="Swith Cape +1",
     }
 
     -------------------------------------Midcast
     sets.midcast = {} -- Initilization Keep Empty
 
     sets.midcast.FastRecast = {
-        -- Add your set here
+        head="Herculean Helm",
+        body="Foppish Tunica",
+        hands="Sombra Mittens",
+        legs="Herculean Trousers",
+        feet="Regal Pumps +1",
+        neck="Voltsurge Torque",
+        waist="Siegel Sash",
+        left_ear="Aredan Earring",
+        right_ear="Enchntr. Earring +1",
+        left_ring="Stikini Ring",
+        right_ring="Stikini Ring",
+        back="Swith Cape +1",
     }
 
     -------------------------------------Kiting
@@ -253,13 +275,18 @@ function init_gear_sets()
     sets.precast.JA["Overdrive"] = {body = Relic_Pitre.Body_PTP}
 
     sets.precast.JA["Repair"] = {
-        -- Add your set here
+        ammo = "Automat. Oil +3",
+        feet = Artifact_Foire.Feet_Repair_PMagic,
     }
 
     sets.precast.JA["Maintenance"] = set_combine(sets.precast.JA["Repair"], {})
 
     sets.precast.JA.Maneuver = {
-        -- Add your set here
+        neck = "Buffoon's Collar +1",
+        body = "Karagoz Farsetto",
+        hands = Artifact_Foire.Hands_Mane_Overload,
+        back = "Visucius's Mantle",
+        ear1 = "Burana Earring"
     }
 
     sets.precast.JA["Activate"] = { back = "Visucius's Mantle" }
@@ -271,7 +298,18 @@ function init_gear_sets()
 
     --Waltz set (chr and vit)
     sets.precast.Waltz = {
-        -- Add your set here
+        head = "Herculean Helm",
+        neck = "Unmoving Collar +1",
+        ear2 = "Roundel Earring",
+        ear1 = "Soil Pearl",
+        body = "Passion Jacket",
+        hands = "Slither Gloves +1",
+        ring1 = "Niqmaddu Ring",
+        ring2 = "Titan Ring",
+        back = "Iximulew Cape",
+        waist = "Warwolf Belt",
+        legs = "Samnuha Tights",
+        feet = "Rawhide Boots"
     }
 
     sets.precast.Waltz["Healing Waltz"] = {}
@@ -280,28 +318,87 @@ function init_gear_sets()
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined
     sets.precast.WS = {
-        -- Add your set here
+        head="Sukeroku Hachi.",
+        body="Heyoka Harness",
+        hands="Tali'ah Gages +1",
+        legs="Heyoka Subligar",
+        feet="Tali'ah Crackows +1",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Ifrit Ring +1",
+        right_ring="Ifrit Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
     }
 
     -- Specific weaponskill sets.  Uses the base set if an appropriate WSMod version isn't found.
     sets.precast.WS["Stringing Pummel"] = set_combine( sets.precast.WS, {
-            -- Add your set here
+            head="Sukeroku Hachi.",
+            body="Heyoka Harness",
+            hands="Tali'ah Gages +1",
+            legs="Heyoka Subligar",
+            feet="Tali'ah Crackows +1",
+            neck="Fotia Gorget",
+            waist="Fotia Belt",
+            left_ear="Mache Earring +1",
+            right_ear="Mache Earring +1",
+            left_ring="Ifrit Ring +1",
+            right_ring="Ifrit Ring +1",
+            back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}}, 
         }
     )
     --Caro Necklace / Grunfeld Rope
     sets.precast.WS["Stringing Pummel"].Mod = set_combine(sets.precast.WS, {
-            -- Add your set here
+        head="Sukeroku Hachi.",
+        body="Heyoka Harness",
+        hands="Tali'ah Gages +1",
+        legs="Heyoka Subligar",
+        feet="Tali'ah Crackows +1",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Ifrit Ring +1",
+        right_ring="Ifrit Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
         }
     )
 
     sets.precast.WS["Victory Smite"] = set_combine( sets.precast.WS, {
-            -- Add your set here
+        head="Sukeroku Hachi.",
+        body="Heyoka Harness",
+        hands="Tali'ah Gages +1",
+        legs="Heyoka Subligar",
+        feet="Tali'ah Crackows +1",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Ifrit Ring +1",
+        right_ring="Ifrit Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
         }
     )
     --Rao Haidate/Hiza. Hizayoroi +1/Abnoba Kaftan
 
     sets.precast.WS["Shijin Spiral"] = set_combine( sets.precast.WS, {
-            -- Add your set here
+        head={ name="Herculean Helm", augments={'Accuracy+25 Attack+25','"Store TP"+2','Attack+14',}},
+        body="Tali'ah Manteel +2",
+        hands={ name="Herculean Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+3','STR+6','Accuracy+13','Attack+6',}},
+        legs={ name="Herculean Trousers", augments={'Accuracy+23 Attack+23','"Triple Atk."+2','Accuracy+13',}},
+        feet="Tali'ah Crackows +1",
+        neck="Fotia Gorget",
+        waist="Fotia Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Ramuh Ring +1",
+        right_ring="Rajas Ring",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
         }
     )
 
@@ -312,7 +409,19 @@ function init_gear_sets()
 
     -------------------------------------Idle
     sets.idle.MasterDT = {
-        -- Add your set here
+        head={ name="Herculean Helm", augments={'Accuracy+25 Attack+25','"Store TP"+2','Attack+14',}},
+        body="Udug Jacket",
+        hands={ name="Herculean Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+3','STR+6','Accuracy+13','Attack+6',}},
+        legs={ name="Herculean Trousers", augments={'Accuracy+23 Attack+23','"Triple Atk."+2','Accuracy+13',}},
+        feet={ name="Rao Sune-Ate +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        neck="Pup. Collar",
+        waist="Moonbow Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Tali'ah Ring",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
     }
 
     -------------------------------------Engaged
@@ -333,7 +442,19 @@ function init_gear_sets()
 
     --Hyrbid Master DT
     sets.engaged.Master.DT = {
-       -- Add your set here
+        head = "Herculean Helm",
+        neck = "Twilight Torque",
+        ear1 = "Brutal Earring",
+        ear2 = "Cessance Earring",
+        body = "Tali'ah Manteel +1",
+        hands = "Herculean Gloves",
+        ring1 = "Dark Ring",
+        ring2 = "Defending Ring",
+        back = "Umbra Cape",
+        waist = "Incarnation Sash",
+        legs = {name = "Herculean Trousers", augments = {'"Triple Atk."+4', "STR+2", "Attack+3"}},
+        feet = {name = "Herculean Boots", augments = {"Attack+19", '"Triple Atk."+4', "Accuracy+10"}}
+
     }
 
     ----------------------------------------------------------------------------------
@@ -344,22 +465,70 @@ function init_gear_sets()
     -----------------------------------------------------------------------------------
 
     sets.engaged.MasterPet = {
-        -- Add your set here
+        head={ name="Herculean Helm", augments={'Accuracy+25 Attack+25','"Store TP"+2','Attack+14',}},
+        body="Tali'ah Manteel +2",
+        hands={ name="Herculean Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+3','STR+6','Accuracy+13','Attack+6',}},
+        legs={ name="Herculean Trousers", augments={'Accuracy+23 Attack+23','"Triple Atk."+2','Accuracy+13',}},
+        feet="Tali'ah Crackows +1",
+        neck="Pup. Collar",
+        waist="Moonbow Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Chirich Ring",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
     }
 
     -------------------------------------Acc
     sets.engaged.MasterPet.Acc = {
-        -- Add your set here
+        head={ name="Herculean Helm", augments={'Accuracy+25 Attack+25','"Store TP"+2','Attack+14',}},
+        body="Tali'ah Manteel +2",
+        hands={ name="Herculean Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+3','STR+6','Accuracy+13','Attack+6',}},
+        legs={ name="Herculean Trousers", augments={'Accuracy+23 Attack+23','"Triple Atk."+2','Accuracy+13',}},
+        feet="Tali'ah Crackows +1",
+        neck="Pup. Collar",
+        waist="Moonbow Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Chirich Ring",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     -------------------------------------TP
     sets.engaged.MasterPet.TP = {
-        -- Add your set here
+        head={ name="Herculean Helm", augments={'Accuracy+25 Attack+25','"Store TP"+2','Attack+14',}},
+        body="Tali'ah Manteel +2",
+        hands={ name="Herculean Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+3','STR+6','Accuracy+13','Attack+6',}},
+        legs={ name="Herculean Trousers", augments={'Accuracy+23 Attack+23','"Triple Atk."+2','Accuracy+13',}},
+        feet="Tali'ah Crackows +1",
+        neck="Pup. Collar",
+        waist="Moonbow Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Chirich Ring",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     -------------------------------------DT
     sets.engaged.MasterPet.DT = {
-        -- Add your set here
+        head={ name="Taeon Chapeau", augments={'DEF+19','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body="Udug Jacket",
+        hands={ name="Herculean Gloves", augments={'Accuracy+19 Attack+19','"Triple Atk."+3','STR+6','Accuracy+13','Attack+6',}},
+        legs="Tali'ah Sera. +1",
+        feet={ name="Rao Sune-Ate +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        neck="Pup. Collar",
+        waist="Moonbow Belt",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Chirich Ring",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
     
     -------------------------------------Regen
@@ -381,51 +550,152 @@ function init_gear_sets()
 
     -------------------------------------Magic Midcast
     sets.midcast.Pet = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
+
     }
 
     sets.midcast.Pet.Cure = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
+
     }
 
     sets.midcast.Pet["Healing Magic"] = {
-        --Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
+
     }
 
     sets.midcast.Pet["Elemental Magic"] = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
     }
 
     sets.midcast.Pet["Enfeebling Magic"] = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
     }
 
     sets.midcast.Pet["Dark Magic"] = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
     }
 
     sets.midcast.Pet["Divine Magic"] = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
     }
 
     sets.midcast.Pet["Enhancing Magic"] = {
-        -- Add your set here
+        ear2 = "Enmerkar Earring",
+        ear1 = "Burana Earring",
+        back = "Visucius's Mantle",
+        head = "Tali'ah Turban +1",
+        body = "Tali'ah Manteel +1",
+        hands = "Naga Tekko",
+        legs = "Tali'ah Sera. +1",
+        feet = "Tali'ah Crackows +1",
+        waist = "Ukko Sash",
+        neck = "Adad Amulet"
     }
 
     -------------------------------------Idle
     sets.idle.Pet = {
-
+        head={ name="Taeon Chapeau", augments={'DEF+19','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body={ name="Taeon Tabard", augments={'Pet: Evasion+21','Pet: "Dbl. Atk."+4','Pet: Damage taken -4%',}},
+        hands={ name="Rao Kote", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        legs="Tali'ah Sera. +1",
+        feet={ name="Rao Sune-Ate +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
     }
 
     sets.idle.PetDT = {
-        --Add your set here
+        head={ name="Taeon Chapeau", augments={'DEF+19','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body={ name="Taeon Tabard", augments={'Pet: Evasion+21','Pet: "Dbl. Atk."+4','Pet: Damage taken -4%',}},
+        hands={ name="Rao Kote", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        legs="Tali'ah Sera. +1",
+        feet={ name="Rao Sune-Ate +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
     }
 
     -------------------------------------Enmity
     sets.pet = {} -- Not Used
 
     sets.pet.Enmity = {
-        --Add your set here
+        head="Heyoka Cap",
+        body="Heyoka Harness",
+        hands="Heyoka Mittens",
+        legs="Heyoka Subligar",
+        feet="Heyoka Leggings",
     }
 
     -------------------------------------Engaged for Pet Only
@@ -435,19 +705,66 @@ function init_gear_sets()
     ]]
     -- Idle sets to wear while pet is engaged and you are idle
     sets.idle.Pet.Engaged = {
-        --Add your set here
+        head="Tali'ah Turban +1",
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     sets.idle.Pet.Engaged.Acc = {
-        --Add your set here
+        head="Tali'ah Turban +1",
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     sets.idle.Pet.Engaged.TP = {
-        --Add your set here
+        head="Tali'ah Turban +1",
+        body=Relic_Pitre.Body_PTP,
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     sets.idle.Pet.Engaged.DT = {
-        --Add your set here
+        head={ name="Taeon Chapeau", augments={'DEF+19','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body={ name="Taeon Tabard", augments={'Pet: Evasion+21','Pet: "Dbl. Atk."+4','Pet: Damage taken -4%',}},
+        hands={ name="Rao Kote", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        legs="Tali'ah Sera. +1",
+        feet={ name="Rao Sune-Ate +1", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
     }
 
     sets.idle.Pet.Engaged.Regen = {
@@ -457,26 +774,73 @@ function init_gear_sets()
     sets.idle.Pet.Engaged.Ranged = set_combine(sets.idle.Pet.Engaged, {legs = Empy_Karagoz.Legs_Combat})
 
     sets.idle.Pet.Engaged.Nuke = set_combine(sets.idle.Pet.Engaged,{
-            -- Add your set here
+        legs = "Tali'ah Sera. +1",
+        feet = "Naga Kyahan",
+        hands = "Naga Tekko",
+        ear1 = "Burana Earring",
+        ear2 = "Enmerkar Earring",
+        back = "Visucius's Mantle",
+        waist = "Incarnation Sash"
         }
     )
 
     sets.idle.Pet.Engaged.Magic =set_combine(sets.idle.Pet.Engaged, {
-            -- Add your set here
+        legs = "Tali'ah Sera. +1",
+        feet = "Naga Kyahan",
+        hands = "Naga Tekko",
+        ear1 = "Burana Earring",
+        ear2 = "Enmerkar Earring",
+        back = "Visucius's Mantle",
+        waist = "Incarnation Sash"
         }
     )
 
     -------------------------------------WS
     sets.midcast.Pet.WeaponSkillNoAcc = {
-        -- Add your set here
+        head = Empy_Karagoz.Head_PTPBonus,
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
     }
 
     sets.midcast.Pet.WSNoFTP = {
-        -- Add your set here
+        head = Empy_Karagoz.Head_PTPBonus,
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
+
     }
 
     sets.midcast.Pet.WSFTP = {
-        -- Add your set here
+        head = Empy_Karagoz.Head_PTPBonus,
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},
     }
 
     sets.midcast.Pet.WeaponSkill = sets.midcast.Pet.WSNoFTP
@@ -504,12 +868,36 @@ function init_gear_sets()
     ---------------------------------------------
     -- Town Set
     sets.idle.Town = {
-        -- Add your set here
+        head="Tali'ah Turban +1",
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     -- Resting sets
     sets.resting = {
-        -- Add your set here
+        head="Tali'ah Turban +1",
+        body="Tali'ah Manteel +2",
+        hands="Tali'ah Gages +1",
+        legs="Tali'ah Sera. +1",
+        feet={ name="Herculean Boots", augments={'Pet: Attack+30 Pet: Rng.Atk.+30','Pet: "Store TP"+9','Pet: "Mag.Atk.Bns."+15',}},
+        neck="Pup. Collar",
+        waist="Klouskap Sash",
+        left_ear="Mache Earring +1",
+        right_ear="Mache Earring +1",
+        left_ring="Thurandaut Ring",
+        right_ring="Varar Ring +1",
+        back={ name="Visucius's Mantle", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+4 Pet: Rng. Acc.+4','Pet: "Regen"+10','Pet: Damage taken -5%',}},    
+
     }
 
     -- Defense sets
@@ -930,14 +1318,21 @@ function user_customize_idle_set(idleSet)
     --Custom Idle Group when Pet is Engaged and Master is Idle
     if Master_State:lower() == const_stateIdle:lower() and Pet_State:lower() == const_stateEngaged:lower() then
         if state.HybridMode.current == "Normal" then
+            debug('Customize Idle: Equipping Hybrid Normal')
             return idleSet
         else
+            debug('Customize Idle: Equipping Hybrid '..state.HybridMode.current)
             idleSet = idleSet[state.HybridMode.current]
             return idleSet
         end
     else
         return idleSet
     end
+end
+
+function user_customize_melee_set(meleeSet)
+
+    return meleeSet
 end
 
 function job_precast(spell, action)
@@ -1067,7 +1462,6 @@ function job_self_command(command, eventArgs)
     elseif command[1]:lower() == "debug" then
         d_mode = not d_mode
         debug('Debug Mode is now on!')
-        debug(dump(sets.idle))
         refreshWindow()
     elseif command[1]:lower() == "predict" then
         determinePuppetType()
@@ -1124,8 +1518,10 @@ windower.register_event(
                     else
                         if state.SetFTP.value then
                             equip(sets.midcast.Pet.WSFTP)
+                            debug('Prerender: Pet Weaponskill FTP Equipped')
                         else
                             equip(sets.midcast.Pet.WeaponSkill)
+                            debug('Prerender: Pet Weaponskill Equipped')
                         end
                     end
                 else
@@ -1138,12 +1534,14 @@ windower.register_event(
                 if buffactive["Fire Maneuver"] and (pet.attachments.strobe or pet.attachments["strobe II"]) then
                     if Strobe_Recast <= 2 then
                         equip(sets.pet.Enmity)
+                        debug('Prerender: Enmity Equipped for Provoke')
                     end
                 end
 
                 if buffactive["Light Maneuver"] and pet.attachments.flashbulb == true then
                     if Flashbulb_Recast <= 2 then
                         equip(sets.pet.Enmity)
+                        debug('Prerender: Enmity Equipped for Flashbulb')
                     end
                 end
             end
@@ -1352,11 +1750,11 @@ function debug(message)
     
     --Default location ..\PlayOnline\SquareEnix\FINAL FANTASY XI
     --Are welcome to add a custom path to the front for example C:\\users\\puppet_debug.log
-    debug_file = io.open("puppet_debug.log", "a")
+    debug_file = io.open("F:\\logs\\puppet_debug_"..os.date("%m_%d_%Y")..".log", "a")
 
     io.output(debug_file)
     
-    io.write('['..os.date()..'] - Debug - '..message..'\n')
+    io.write(os.date('%X')..' : '..message..'\n')
     
     io.close(debug_file)
 
