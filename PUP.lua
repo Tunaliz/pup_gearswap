@@ -1299,14 +1299,6 @@ windower.register_event(
                         equip(set_combine(sets.midcast.Pet.WSFTP,{main="Ohtas"}))
                     end
                     
-                    --[[
-                        Sets up the count down for keeping pet in weapon skill gear
-                        If the pet fails to use the weapon skill in the alloted time
-                        We are going to simply prevent the gear from being equipped
-                        Until the puppet is dropped below 1000 TP and everything is reset
-                    ]]
-                    
-                    --If we didn't just begin a new timer then set a new timer since we have reset into a new pet WS chance
                     startWeaponSkillPetTimer()
                 end
             end
@@ -1349,6 +1341,8 @@ function startWeaponSkillPetTimer()
         petWeaponSkillTime = os.time()
         startedPetWeaponSkillTimer = true
     end
+
+    return
 end
 
 function resetWeaponSkillPetTimer()
@@ -1356,6 +1350,8 @@ function resetWeaponSkillPetTimer()
     justFinishedWeaponSkill = false
     petWeaponSkillLock = false
     startedPetWeaponSkillTimer = false
+
+    return
 end
 
 windower.register_event(
