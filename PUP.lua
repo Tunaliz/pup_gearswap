@@ -1248,9 +1248,9 @@ function job_self_command(command, eventArgs)
 
 end
 
-DefaultPetWeaponSkillLockOutTimer = 5 -- This will be the time that is changeable by the player
 
 --Defaults
+DefaultPetWeaponSkillLockOutTimer = 5 -- This will be the time that is changeable by the player
 justFinishedWeaponSkill = false
 petWeaponSkillLock = false
 startedPetWeaponSkillTimer = false
