@@ -1117,6 +1117,10 @@ function job_aftercast(spell, action, spellMap, eventArgs)
                 "*-*-*-*-*-*-*-*-* [ " .. pet.name .. " is about to " .. ws .. " (" .. modif .. ") ] *-*-*-*-*-*-*-*-*"
             )
             
+            --Since this will be a new Weapon Skill we just performed best to reset any current timers
+            resetWeaponSkillPetTimer()
+            --Begin the count down until we may lock out the pet weapon skill set
+            startWeaponSkillPetTimer()
             eventArgs.handled = true
         else
             handle_equipping_gear(player.status, Pet_State)
@@ -1269,6 +1273,16 @@ windower.register_event(
                 --In some cases Mote's doesn't recognize a pet's status change
                 Pet_State = pet.status
                 Master_State = player.status
+
+                --We only want this to activate if we are actually running the timer for the pet weapon skill
+                if pet.tp < 1000 and startedPetWeaponSkillTimer == true and petWeaponSkillRecast <= 0 then
+                    resetWeaponSkillPetTimer()
+                elseif pet.tp >= 1000 and petWeaponSkillRecast <= 0 and startedPetWeaponSkillTimer == true then
+                    --We have passed the allowed time without the puppet using a weapon skill, locking till next round
+                    petWeaponSkillRecast = 0
+                    petWeaponSkillLock = true
+                    handle_equipping_gear(player.status, pet.status)
+                end
             end
 
             --This reads if pet is active and 
@@ -1291,23 +1305,9 @@ windower.register_event(
                         We are going to simply prevent the gear from being equipped
                         Until the puppet is dropped below 1000 TP and everything is reset
                     ]]
-                    if petWeaponSkillRecast > 0 and startedPetWeaponSkillTimer == true then
-                        --Count down the timer if it has started
-                        petWeaponSkillRecast = DefaultPetWeaponSkillLockOutTimer - (os.time() - petWeaponSkillTime)
-                    elseif petWeaponSkillRecast <= 0 and startedPetWeaponSkillTimer == false then
-                        --If we didn't just begin a new timer then set a new timer since we have reset into a new pet WS chance
-                        petWeaponSkillRecast = DefaultPetWeaponSkillLockOutTimer
-                        petWeaponSkillTime = os.time()
-                        startedPetWeaponSkillTimer = true
-                    else
-                        --We have passed the allowed time without the puppet using a weapon skill, locking till next round
-                        petWeaponSkillRecast = 0
-                        petWeaponSkillLock = true
-                    end
-                elseif pet.tp < 1000 then
-                    justFinishedWeaponSkill = false
-                    petWeaponSkillLock = false
-                    startedPetWeaponSkillTimer = false
+                    
+                    --If we didn't just begin a new timer then set a new timer since we have reset into a new pet WS chance
+                    startWeaponSkillPetTimer()
                 end
             end
 
@@ -1333,10 +1333,30 @@ windower.register_event(
                 Flashbulb_Recast = Flashbulb_Timer - (os.time() - Flashbulb_Time)
             end
 
+            if petWeaponSkillRecast > 0 and startedPetWeaponSkillTimer == true then
+                --Count down the timer if it has started
+                petWeaponSkillRecast = DefaultPetWeaponSkillLockOutTimer - (os.time() - petWeaponSkillTime)
+            end
+
             refreshWindow()
         end
     end
 )
+
+function startWeaponSkillPetTimer()
+    if petWeaponSkillRecast <= 0 and startedPetWeaponSkillTimer == false then
+        petWeaponSkillRecast = DefaultPetWeaponSkillLockOutTimer
+        petWeaponSkillTime = os.time()
+        startedPetWeaponSkillTimer = true
+    end
+end
+
+function resetWeaponSkillPetTimer()
+    petWeaponSkillRecast = 0
+    justFinishedWeaponSkill = false
+    petWeaponSkillLock = false
+    startedPetWeaponSkillTimer = false
+end
 
 windower.register_event(
     "incoming text",
