@@ -1280,12 +1280,10 @@ windower.register_event(
                 --Now if pet has more than 1000 tp and pet is engaged and didn't just finish a weaponskill and we have not locked the pet out this set
                 if pet.tp >= 1000 and Pet_State == const_stateEngaged and justFinishedWeaponSkill == false and petWeaponSkillLock == false then
                     if state.SetFTP.value then
-                       equip(sets.midcast.Pet.WSFTP)
+                        equip(set_combine(sets.midcast.Pet.WSFTP,{main="Ohtas"}))
                     else
-                        equip(sets.midcast.Pet.WSNoFTP)
+                        equip(set_combine(sets.midcast.Pet.WSFTP,{main="Ohtas"}))
                     end
-                        --Add weapon here if you want to swap in a weapon prior to Weapon Skill happening for pet
-                    equip({main="Othas"})
                     
                     --[[
                         Sets up the count down for keeping pet in weapon skill gear

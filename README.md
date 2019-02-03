@@ -187,6 +187,12 @@ You can hide the Options from the Window by using the below command
 You can toggle default keybinds set up for cycles/modes on menu by using the below command
 - `//gs c hide keybinds`
 
+##Custom Locking for Gear
+You can now set up a small custom gear lock based on gear you might want to lock for a certain event.
+
+This is toggled via:
+- `
+
 ## Notes On Pet Equipping Weaponskill Gear
 This is currently how we determine when to equip a pets Weaponskill Gear prior to it using:
 
