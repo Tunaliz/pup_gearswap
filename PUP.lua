@@ -707,7 +707,7 @@ Flashbulb_Recast = 0
 Flashbulb_Time = 0
 Strobe_Time = 0
 
-d_mode = false
+d_mode = true
 
 time_start = os.time()
 
@@ -799,7 +799,9 @@ function refreshWindow()
     textColorEnd = " \\cr"
     textColor = "\\cs(125, 125, 0)"
 
-    if not state.textHideHUB.value then
+    test = state.textHideHUB.value
+
+    if state.textHideHUB.value == true then
         textinbox = ''
         windower.text.set_text(tb_name, textinbox)
         return
@@ -855,7 +857,8 @@ function drawPetInfo()
     textinbox = textinbox .. drawTitle("   Pet Info   ")
     textinbox = textinbox .. "- \\cs(0, 0, 125)HP : " .. pet.hp .. "/" .. pet.max_hp .. textColorNewLine
     textinbox = textinbox .. "- \\cs(0, 125, 0)MP : " .. pet.mp .. "/" .. pet.max_mp .. textColorNewLine
-    textinbox = textinbox .. "- \\cs(255, 0, 0)TP : " .. tostring(pet.tp) .. textColorNewLine
+    textinbox = textinbox .. "- \\cs(255, 0, 0)TP : " .. tostring(pet.tp) ..textColorNewLine
+    textinbox = textinbox .. "- \\cs(255, 0, 0)Lock Out : " .. ternary(startedPetWeaponSkillTimer, "LOCKED", "UNLOCKED") .. " ( " .. petWeaponSkillRecast .. " )" ..textColorNewLine
 end
 
 --This handles drawing the Pet Skills for the text box
@@ -1254,7 +1257,7 @@ end
 
 
 --Defaults
-DefaultPetWeaponSkillLockOutTimer = 5 -- This will be the time that is changeable by the player
+DefaultPetWeaponSkillLockOutTimer = 8 -- This will be the time that is changeable by the player
 justFinishedWeaponSkill = false
 petWeaponSkillLock = false
 startedPetWeaponSkillTimer = false
@@ -1275,13 +1278,14 @@ windower.register_event(
                 Master_State = player.status
 
                 --We only want this to activate if we are actually running the timer for the pet weapon skill
-                if pet.tp < 1000 and startedPetWeaponSkillTimer == true and petWeaponSkillRecast <= 0 then
-                    resetWeaponSkillPetTimer()
-                elseif pet.tp >= 1000 and petWeaponSkillRecast <= 0 and startedPetWeaponSkillTimer == true then
+
+                if pet.tp >= 1000 and petWeaponSkillRecast <= 0 and startedPetWeaponSkillTimer == true then
                     --We have passed the allowed time without the puppet using a weapon skill, locking till next round
                     petWeaponSkillRecast = 0
                     petWeaponSkillLock = true
                     handle_equipping_gear(player.status, pet.status)
+                elseif pet.tp < 1000 or Pet_State == "Idle" then
+                    resetWeaponSkillPetTimer()
                 end
             end
 
@@ -1341,8 +1345,6 @@ function startWeaponSkillPetTimer()
         petWeaponSkillTime = os.time()
         startedPetWeaponSkillTimer = true
     end
-
-    return
 end
 
 function resetWeaponSkillPetTimer()
@@ -1350,8 +1352,6 @@ function resetWeaponSkillPetTimer()
     justFinishedWeaponSkill = false
     petWeaponSkillLock = false
     startedPetWeaponSkillTimer = false
-
-    return
 end
 
 windower.register_event(
