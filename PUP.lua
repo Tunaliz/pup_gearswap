@@ -89,6 +89,11 @@ function user_setup()
     state.AutoMan = M(false, "Auto Maneuver")
 
     --[[
+        //gs c toggle autodeploy
+    ]]
+    state.AutoDeploy = M(false, "Auto Deploy")
+
+    --[[
         Alt + D will turn on or off Lock Pet DT
         (Note this will block all gearswapping when active)
     ]]
@@ -707,7 +712,7 @@ Flashbulb_Recast = 0
 Flashbulb_Time = 0
 Strobe_Time = 0
 
-d_mode = true
+d_mode = false
 
 time_start = os.time()
 
@@ -858,7 +863,7 @@ function drawPetInfo()
     textinbox = textinbox .. "- \\cs(0, 0, 125)HP : " .. pet.hp .. "/" .. pet.max_hp .. textColorNewLine
     textinbox = textinbox .. "- \\cs(0, 125, 0)MP : " .. pet.mp .. "/" .. pet.max_mp .. textColorNewLine
     textinbox = textinbox .. "- \\cs(255, 0, 0)TP : " .. tostring(pet.tp) ..textColorNewLine
-    textinbox = textinbox .. "- \\cs(255, 0, 0)Lock Out : " .. ternary(startedPetWeaponSkillTimer, "LOCKED", "UNLOCKED") .. " ( " .. petWeaponSkillRecast .. " )" ..textColorNewLine
+    textinbox = textinbox .. "- \\cs(255, 0, 0)WS Gear Lock : " .. ternary(startedPetWeaponSkillTimer and petWeaponSkillRecast <= 0 , "On", "Off") .. " ( " .. petWeaponSkillRecast .. " )" ..textColorNewLine
 end
 
 --This handles drawing the Pet Skills for the text box
@@ -1110,7 +1115,7 @@ end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
     if pet.isvalid then
-        if SC[pet.frame][spell.english] and pet.tp >= 850 then
+        if SC[pet.frame][spell.english] and pet.tp >= 850 and Pet_State == 'Engaged' then
             ws = SC[pet.frame][spell.english]
             modif = Modifier[ws]
             equip(sets.midcast.Pet.WS[modif])
@@ -1138,11 +1143,15 @@ function job_status_change(new, old)
     if new == "Engaged" then
         Master_State = const_stateEngaged
         TotalSCalc()
-        add_to_chat(392, "*-*-*-*-*-*-*-*-* [ Engaged ] *-*-*-*-*-*-*-*-*")
+
+        if state.AutoDeploy.value == true and pet.isvalid then
+            add_to_chat(392, "*-*-*-*-*-*-*-*-* [ Auto Deploy: On ] *-*-*-*-*-*-*-*-*")
+
+            send_command('input /pet "Deploy" <t>')
+        end
     else
         Master_State = const_stateIdle
         TotalSCalc()
-        add_to_chat(392, "*-*-*-*-*-*-*-*-* [ Idle ] *-*-*-*-*-*-*-*-*")
     end
 
     handle_equipping_gear(player.status, Pet_State)
